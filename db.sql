@@ -9,6 +9,7 @@ CREATE Table produit (
     description VARCHAR(255),
     prix FLOAT,
     id_category int,
+    Qte int,
     CONSTRAINT FOREIGN KEY (id_category) REFERENCES category(id_category)
 );
 
@@ -20,7 +21,8 @@ CREATE Table magasin (
 
 CREATE TABLE produit_magasin (
     id_produit int NOT NULL, 
-    id_magasin int NOT NULL, 
+    id_magasin int NOT NULL,
+    Qte int,
     CONSTRAINT PRIMARY KEY (id_produit, id_magasin),
     CONSTRAINT FOREIGN KEY (id_produit) REFERENCES produit(id_produit),
     CONSTRAINT FOREIGN KEY (id_magasin) REFERENCES magasin(id_magasin)
