@@ -2,20 +2,36 @@ package com.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Table
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Table(name="produit_magasin")
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Produit_magasin {
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@Id
+	@ManyToOne
 	@JoinColumn(name="id_produit")
-	int id_produit ;
-	@ManyToOne(fetch=FetchType.LAZY)
+	private Produit produit;
+	
+	@Id
+	@ManyToOne
 	@JoinColumn(name="id_magasin")
-	int id_magasin ;
-	@JoinColumn
-	int Qte;
+	private Magasin magasin;
+	
+	private int qte;
+	
 }

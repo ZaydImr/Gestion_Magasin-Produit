@@ -6,20 +6,34 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-@Table
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Table(name="category")
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Category {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id_category")
-	int id_category ;
-	@Column
-	String nom_category;
-	@OneToMany(mappedBy="id_category",fetch=FetchType.LAZY)
+	int id;
+	@Column(name = "nom_category")
+	String nom;
+	
+	@OneToMany(mappedBy="category", fetch=FetchType.LAZY)
 	private List<Produit> produits;
+	
 }
